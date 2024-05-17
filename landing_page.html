@@ -17,18 +17,87 @@
         background-repeat: no-repeat;
         transition: background-image 1s ease-in-out;
     }
-    
+
     #welcome {
         text-align: center;
         color: white;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         font-size: 72px;
     }
+
+    .explore-button {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        padding: 10px 20px;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        cursor: pointer;
+        font-size: 18px;
+        transition: background-color 0.3s ease;
+    }
+
+    .explore-button:hover {
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: -250px;
+        width: 250px;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        transition: left 0.3s ease;
+        color: white;
+        padding: 20px;
+        box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    .sidebar.active {
+        display: block;
+        left: 0;
+    }
+
+    .sidebar a {
+        display: block;
+        color: white;
+        text-decoration: none;
+        margin: 15px 0;
+        font-size: 20px;
+        cursor: pointer;
+    }
+
+    .sidebar a:hover {
+        text-decoration: underline;
+    }
+
+    .sidebar .close-btn {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
 <div id="welcome">
     <h1>Welcome to the Football World</h1>
+</div>
+
+<button class="explore-button" onclick="toggleSidebar()">Explore</button>
+
+<div class="sidebar" id="sidebar">
+    <span class="close-btn" onclick="toggleSidebar()">×</span>
+    <a href="#">Football News</a>
+    <a href="#">Tutorials</a>
+    <a href="routine.html">Routine</a>
+    <a href="#">Reels</a>
+    <a href="#">Posts</a>
+    <a href="#">Story</a>
 </div>
 
 <script>
@@ -45,6 +114,11 @@
     }
 
     setInterval(changeBackground, 5000); // Change background every 5 seconds
+
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        sidebar.classList.toggle('active');
+    }
 </script>
 </body>
 </html>
